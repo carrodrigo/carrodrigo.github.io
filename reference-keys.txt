@@ -4,3 +4,5 @@ visualización-de-la-serie-de-tiempo
 serie-de-tiempo-de-ventas-totales
 comparación-de-ventas-por-año
 serie-temporal-con-promedio-móvil
+gráfico-de-rezagos
+análisis-de-la-estacionalidad-anual
