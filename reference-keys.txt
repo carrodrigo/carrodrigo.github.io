@@ -1,0 +1,6 @@
+Introducción.unnumbered
+conjunto-de-datos-online-retail-ii
+visualización-de-la-serie-de-tiempo
+serie-de-tiempo-de-ventas-totales
+comparación-de-ventas-por-año
+serie-temporal-con-promedio-móvil
