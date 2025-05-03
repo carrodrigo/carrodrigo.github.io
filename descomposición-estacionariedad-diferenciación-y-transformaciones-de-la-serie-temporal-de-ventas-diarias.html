@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | Análisis de series de tiempo</title>
+  <title>3 Descomposición, Estacionariedad, Diferenciación y Transformaciones de la Serie Temporal de Ventas Diarias | Análisis de series de tiempo</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The HTML output format for this example is bookdown::gitbook, set in the _output.yml file." />
   <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | Análisis de series de tiempo" />
+  <meta property="og:title" content="3 Descomposición, Estacionariedad, Diferenciación y Transformaciones de la Serie Temporal de Ventas Diarias | Análisis de series de tiempo" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The HTML output format for this example is bookdown::gitbook, set in the _output.yml file." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | Análisis de series de tiempo" />
+  <meta name="twitter:title" content="3 Descomposición, Estacionariedad, Diferenciación y Transformaciones de la Serie Temporal de Ventas Diarias | Análisis de series de tiempo" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The HTML output format for this example is bookdown::gitbook, set in the _output.yml file." />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-
+<link rel="prev" href="visualización-de-la-serie-de-tiempo.html"/>
+<link rel="next" href="referencias.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -118,11 +118,10 @@ div.csl-indent {
 <li class="chapter" data-level="2.4" data-path="visualización-de-la-serie-de-tiempo.html"><a href="visualización-de-la-serie-de-tiempo.html#gráfico-de-rezagos"><i class="fa fa-check"></i><b>2.4</b> Gráfico de Rezagos</a></li>
 <li class="chapter" data-level="2.5" data-path="visualización-de-la-serie-de-tiempo.html"><a href="visualización-de-la-serie-de-tiempo.html#análisis-de-la-estacionalidad-anual"><i class="fa fa-check"></i><b>2.5</b> Análisis de la Estacionalidad Anual</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="análisis-de-la-descomposición-de-ventas.html"><a href="análisis-de-la-descomposición-de-ventas.html"><i class="fa fa-check"></i><b>3</b> Análisis de la Descomposición de Ventas</a>
+<li class="chapter" data-level="3" data-path="descomposición-estacionariedad-diferenciación-y-transformaciones-de-la-serie-temporal-de-ventas-diarias.html"><a href="descomposición-estacionariedad-diferenciación-y-transformaciones-de-la-serie-temporal-de-ventas-diarias.html"><i class="fa fa-check"></i><b>3</b> Descomposición, Estacionariedad, Diferenciación y Transformaciones de la Serie Temporal de Ventas Diarias</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="análisis-de-la-descomposición-de-ventas.html"><a href="análisis-de-la-descomposición-de-ventas.html#descomposición-mensual-de-ventas"><i class="fa fa-check"></i><b>3.1</b> Descomposición mensual de Ventas</a></li>
-<li class="chapter" data-level="3.2" data-path="análisis-de-la-descomposición-de-ventas.html"><a href="análisis-de-la-descomposición-de-ventas.html#descomposición-semanal-de-ventas-diarias"><i class="fa fa-check"></i><b>3.2</b> Descomposición Semanal de Ventas Diarias</a></li>
-<li class="chapter" data-level="3.3" data-path="análisis-de-la-descomposición-de-ventas.html"><a href="análisis-de-la-descomposición-de-ventas.html#conclusiones"><i class="fa fa-check"></i><b>3.3</b> Conclusiones:</a></li>
+<li class="chapter" data-level="3.1" data-path="descomposición-estacionariedad-diferenciación-y-transformaciones-de-la-serie-temporal-de-ventas-diarias.html"><a href="descomposición-estacionariedad-diferenciación-y-transformaciones-de-la-serie-temporal-de-ventas-diarias.html#descomposición"><i class="fa fa-check"></i><b>3.1</b> Descomposición</a></li>
+<li class="chapter" data-level="3.2" data-path="descomposición-estacionariedad-diferenciación-y-transformaciones-de-la-serie-temporal-de-ventas-diarias.html"><a href="descomposición-estacionariedad-diferenciación-y-transformaciones-de-la-serie-temporal-de-ventas-diarias.html#evaluación-de-la-estacionariedad"><i class="fa fa-check"></i><b>3.2</b> Evaluación de la Estacionariedad</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
@@ -145,19 +144,40 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="descomposición-estacionariedad-diferenciación-y-transformaciones-de-la-serie-temporal-de-ventas-diarias" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> Descomposición, Estacionariedad, Diferenciación y Transformaciones de la Serie Temporal de Ventas Diarias<a href="descomposición-estacionariedad-diferenciación-y-transformaciones-de-la-serie-temporal-de-ventas-diarias.html#descomposición-estacionariedad-diferenciación-y-transformaciones-de-la-serie-temporal-de-ventas-diarias" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="descomposición" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Descomposición<a href="descomposición-estacionariedad-diferenciación-y-transformaciones-de-la-serie-temporal-de-ventas-diarias.html#descomposición" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Se intentó descomponer la serie temporal de ventas diarias utilizando un modelo aditivo con una frecuencia de 365 días, asumiendo una periodicidad anual. [Incluir aquí el gráfico de descomposición si se generó correctamente]. Debido a [justificar por qué la descomposición aditiva con esta frecuencia podría no ser ideal, basándose en el error o en la naturaleza de los datos], se podría considerar un análisis más detallado de los ciclos estacionales específicos (semanales, mensuales, eventos) o el uso de métodos de descomposición más robustos como STL (Seasonal-Trend decomposition using Loess).</p>
+</div>
+<div id="evaluación-de-la-estacionariedad" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Evaluación de la Estacionariedad<a href="descomposición-estacionariedad-diferenciación-y-transformaciones-de-la-serie-temporal-de-ventas-diarias.html#evaluación-de-la-estacionariedad" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Para determinar si la serie temporal de ventas diarias es estacionaria, se aplicó la Prueba de Dickey-Fuller Aumentada (ADF). Los resultados de la prueba fueron:</p>
+<p>Basándonos en el p-valor de [incluir el p-valor], [justificar si la serie original se considera estacionaria o no. Si el p-valor es &gt; 0.05, indicar que no se rechaza la hipótesis nula de no estacionariedad].</p>
+<div id="diferenciación" class="section level4 hasAnchor" number="3.2.0.1">
+<h4><span class="header-section-number">3.2.0.1</span> 3.3. Diferenciación<a href="descomposición-estacionariedad-diferenciación-y-transformaciones-de-la-serie-temporal-de-ventas-diarias.html#diferenciación" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Dado que [justificar si la diferenciación fue necesaria basándose en el resultado de la prueba ADF], se aplicó la primera diferenciación a la serie temporal de ventas diarias. Los resultados de la prueba ADF en la serie diferenciada fueron:</p>
+<p>[Justificar si la diferenciación logró hacer la serie estacionaria basándose en el nuevo p-valor. Incluir el gráfico de la serie diferenciada si se realizó].</p>
+</div>
+<div id="transformaciones" class="section level4 hasAnchor" number="3.2.0.2">
+<h4><span class="header-section-number">3.2.0.2</span> 3.4. Transformaciones<a href="descomposición-estacionariedad-diferenciación-y-transformaciones-de-la-serie-temporal-de-ventas-diarias.html#transformaciones" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Para controlar la posible heterocedasticidad y el impacto de los valores atípicos observados en la visualización inicial, se aplicó una transformación logarítmica a la serie temporal de ventas diarias. Los resultados de la prueba ADF en la serie transformada logarítmicamente fueron:</p>
+<p>[Justificar si la transformación logarítmica afectó la estacionariedad de la serie. Incluir el gráfico de la serie transformada logarítmicamente].</p>
+<p>Si se aplicó tanto la transformación logarítmica como la diferenciación, incluir el análisis de la prueba ADF en la serie transformada y diferenciada:</p>
+<p>[Incluir aquí la salida de la prueba ADF en la serie transformada logarítmicamente y diferenciada]</p>
+<p>[Justificar el efecto combinado de la transformación y la diferenciación en la estacionariedad. Incluir el gráfico de la serie transformada logarítmicamente y diferenciada].</p>
+<p>En resumen, [concluir sobre la necesidad de la diferenciación y/o transformación basándose en el análisis realizado y los resultados de las pruebas de estacionariedad. Justificar la elección de mantener la serie original, diferenciarla y/o transformarla para el modelado posterior].</p>
+
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="visualización-de-la-serie-de-tiempo.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="referencias.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -188,7 +208,7 @@ gitbook.start({
     "size": 2
   },
   "edit": {
-    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/%s",
+    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-descomposición.Rmd",
     "text": "Edit"
   },
   "history": {

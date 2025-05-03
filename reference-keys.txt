@@ -6,3 +6,7 @@ comparación-de-ventas-por-año
 serie-temporal-con-promedio-móvil
 gráfico-de-rezagos
 análisis-de-la-estacionalidad-anual
+análisis-de-la-descomposición-de-ventas
+descomposición-mensual-de-ventas
+descomposición-semanal-de-ventas-diarias
+conclusiones
