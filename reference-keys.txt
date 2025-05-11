@@ -9,4 +9,13 @@ análisis-de-la-estacionalidad-anual
 análisis-de-la-descomposición-de-ventas
 descomposición-mensual-de-ventas
 descomposición-semanal-de-ventas-diarias
-conclusiones
+modelado-con-holt-winters-y-suavizamiento-exponencial
+metodología-holt-winters
+análisis-del-gráfico-de-ajuste-holt-winters
+pronóstico-holt-winters-log-ventas-diarias
+transformación-inversa
+metodologías-de-suavizamiento-exponencial
+suavizamiento-exponencial-simple-ses
+suavizamiento-exponencial-doble-holt
+suavizamiento-exponencial-triple
+evaluación-y-comparación
