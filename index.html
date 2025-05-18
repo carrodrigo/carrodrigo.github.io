@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Análisis de series de tiempo</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The HTML output format for this example is bookdown::gitbook, set in the _output.yml file." />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Análisis de series de tiempo" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The HTML output format for this example is bookdown::gitbook, set in the _output.yml file." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Análisis de series de tiempo" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The HTML output format for this example is bookdown::gitbook, set in the _output.yml file." />
+  
+
+<meta name="author" content="Carlos Piñeros  Maestría en Ciencia de Datos  Pontificia Universidad Javeriana de Cali" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="visualización-de-la-serie-de-tiempo.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Análisis de series de tiempo</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introducción</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#conjunto-de-datos-online-retail-ii"><i class="fa fa-check"></i><b>1.1</b> Conjunto de datos Online Retail II</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="visualización-de-la-serie-de-tiempo.html"><a href="visualización-de-la-serie-de-tiempo.html"><i class="fa fa-check"></i><b>2</b> Visualización de la serie de tiempo</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="visualización-de-la-serie-de-tiempo.html"><a href="visualización-de-la-serie-de-tiempo.html#serie-de-tiempo-de-ventas-totales"><i class="fa fa-check"></i><b>2.1</b> Serie de Tiempo de Ventas Totales</a></li>
+<li class="chapter" data-level="2.2" data-path="visualización-de-la-serie-de-tiempo.html"><a href="visualización-de-la-serie-de-tiempo.html#comparación-de-ventas-por-año"><i class="fa fa-check"></i><b>2.2</b> Comparación de Ventas por Año</a></li>
+<li class="chapter" data-level="2.3" data-path="visualización-de-la-serie-de-tiempo.html"><a href="visualización-de-la-serie-de-tiempo.html#serie-temporal-con-promedio-móvil"><i class="fa fa-check"></i><b>2.3</b> Serie Temporal con Promedio Móvil</a></li>
+<li class="chapter" data-level="2.4" data-path="visualización-de-la-serie-de-tiempo.html"><a href="visualización-de-la-serie-de-tiempo.html#gráfico-de-rezagos"><i class="fa fa-check"></i><b>2.4</b> Gráfico de Rezagos</a></li>
+<li class="chapter" data-level="2.5" data-path="visualización-de-la-serie-de-tiempo.html"><a href="visualización-de-la-serie-de-tiempo.html#análisis-de-la-estacionalidad-anual"><i class="fa fa-check"></i><b>2.5</b> Análisis de la Estacionalidad Anual</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="análisis-de-la-descomposición-de-ventas.html"><a href="análisis-de-la-descomposición-de-ventas.html"><i class="fa fa-check"></i><b>3</b> Análisis de la Descomposición de Ventas</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="análisis-de-la-descomposición-de-ventas.html"><a href="análisis-de-la-descomposición-de-ventas.html#descomposición-mensual-de-ventas"><i class="fa fa-check"></i><b>3.1</b> Descomposición mensual de Ventas</a></li>
+<li class="chapter" data-level="3.2" data-path="análisis-de-la-descomposición-de-ventas.html"><a href="análisis-de-la-descomposición-de-ventas.html#descomposición-semanal-de-ventas-diarias"><i class="fa fa-check"></i><b>3.2</b> Descomposición Semanal de Ventas Diarias</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="modelado-con-holt-winters-y-suavizamiento-exponencial.html"><a href="modelado-con-holt-winters-y-suavizamiento-exponencial.html"><i class="fa fa-check"></i><b>4</b> Modelado con Holt-Winters y Suavizamiento Exponencial</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="modelado-con-holt-winters-y-suavizamiento-exponencial.html"><a href="modelado-con-holt-winters-y-suavizamiento-exponencial.html#metodología-holt-winters"><i class="fa fa-check"></i><b>4.1</b> Metodología Holt-Winters</a></li>
+<li class="chapter" data-level="4.2" data-path="modelado-con-holt-winters-y-suavizamiento-exponencial.html"><a href="modelado-con-holt-winters-y-suavizamiento-exponencial.html#metodologías-de-suavizamiento-exponencial"><i class="fa fa-check"></i><b>4.2</b> Metodologías de Suavizamiento Exponencial</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="modelado-con-holt-winters-y-suavizamiento-exponencial.html"><a href="modelado-con-holt-winters-y-suavizamiento-exponencial.html#suavizamiento-exponencial-simple-ses"><i class="fa fa-check"></i><b>4.2.1</b> Suavizamiento Exponencial Simple (SES)</a></li>
+<li class="chapter" data-level="4.2.2" data-path="modelado-con-holt-winters-y-suavizamiento-exponencial.html"><a href="modelado-con-holt-winters-y-suavizamiento-exponencial.html#suavizamiento-exponencial-doble-holt"><i class="fa fa-check"></i><b>4.2.2</b> Suavizamiento Exponencial Doble (Holt)</a></li>
+<li class="chapter" data-level="4.2.3" data-path="modelado-con-holt-winters-y-suavizamiento-exponencial.html"><a href="modelado-con-holt-winters-y-suavizamiento-exponencial.html#suavizamiento-exponencial-triple"><i class="fa fa-check"></i><b>4.2.3</b> Suavizamiento Exponencial Triple:</a></li>
+<li class="chapter" data-level="4.2.4" data-path="modelado-con-holt-winters-y-suavizamiento-exponencial.html"><a href="modelado-con-holt-winters-y-suavizamiento-exponencial.html#evaluación-y-comparación"><i class="fa fa-check"></i><b>4.2.4</b> Evaluación y Comparación</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="metodología-box-jenkins-y-modelos-arima.html"><a href="metodología-box-jenkins-y-modelos-arima.html"><i class="fa fa-check"></i><b>5</b> Metodología Box-Jenkins y Modelos ARIMA</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="metodología-box-jenkins-y-modelos-arima.html"><a href="metodología-box-jenkins-y-modelos-arima.html#identificación-del-modelo-arima"><i class="fa fa-check"></i><b>5.1</b> Identificación del Modelo ARIMA</a></li>
+<li class="chapter" data-level="5.2" data-path="metodología-box-jenkins-y-modelos-arima.html"><a href="metodología-box-jenkins-y-modelos-arima.html#gráficos-acf-y-pacf"><i class="fa fa-check"></i><b>5.2</b> Gráficos ACF y PACF</a></li>
+<li class="chapter" data-level="5.3" data-path="metodología-box-jenkins-y-modelos-arima.html"><a href="metodología-box-jenkins-y-modelos-arima.html#estimación-del-modelo-arma"><i class="fa fa-check"></i><b>5.3</b> Estimación del Modelo ARMA</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="metodología-box-jenkins-y-modelos-arima.html"><a href="metodología-box-jenkins-y-modelos-arima.html#verificación-del-modelo-arma"><i class="fa fa-check"></i><b>5.3.1</b> Verificación del Modelo ARMA</a></li>
+<li class="chapter" data-level="5.3.2" data-path="metodología-box-jenkins-y-modelos-arima.html"><a href="metodología-box-jenkins-y-modelos-arima.html#pronóstico-con-el-modelo-arima-seleccionado"><i class="fa fa-check"></i><b>5.3.2</b> Pronóstico con el Modelo ARIMA Seleccionado</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Análisis de series de tiempo</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Análisis de series de tiempo</h1>
+<p class="author"><em><b>Carlos Piñeros</b><br> Maestría en Ciencia de Datos<br> Pontificia Universidad Javeriana de Cali</em></p>
+<p class="date"><em>Fecha actualización:2025-05-18</em></p>
+</div>
+<div id="Introducción.unnumbered" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">1</span> Introducción<a href="index.html#Introducción.unnumbered" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>El análisis de series de tiempo es una técnica estadística utilizada para analizar datos secuenciales en el tiempo. Estos datos pueden ser cualquier variable que se mida a lo largo del tiempo, como precios de acciones, ventas, temperatura, tráfico web, etc. El objetivo principal del análisis de series de tiempo es comprender y modelar las dependencias temporales en los datos para realizar pronósticos futuros, detectar anomalías o patrones, y evaluar el impacto de posibles intervenciones.</p>
+<p>El análisis de series de tiempo es una herramienta poderosa para entender la dinámica de los datos que evolucionan con el tiempo y para hacer predicciones informadas sobre el futuro. La elección de las técnicas y modelos específicos dependerá de las características particulares de la serie de tiempo que se esté analizando.</p>
+<div id="conjunto-de-datos-online-retail-ii" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Conjunto de datos Online Retail II<a href="index.html#conjunto-de-datos-online-retail-ii" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Este análisis emplea el conjunto de datos de Online Retail II del repositorio de aprendizaje automático de UCI<span class="citation">(Chen 2012)</span>, que contiene dos años de datos de transacciones reales de una tienda en línea, con sede en el Reino Unido especializada en regalos únicos. El conjunto de datos comprende 1.067.371 instancias con varias características, como número de factura, código de stock, descripción del producto, cantidad, fecha y hora de la factura, precio unitario, ID de cliente y país.
+El conjunto de datos “Online Retail II” ofrece una base de datos sólida para aplicar técnicas de análisis de series de tiempo, gracias a su registro detallado de transacciones de comercio electrónico a lo largo de los dos años. Cada instancia registrada con la fecha y hora de la factura, ofrece una secuencia temporal que permite rastrear la evolución de las ventas, identificar patrones estacionales y detectar tendencias a largo plazo que permitan descubrir información valiosa para tomar decisiones más informadas, optimizar las operaciones y obtener una ventaja competitiva en el mercado del comercio electrónico.</p>
+<p>El conjunto de datos está licenciado bajo una licencia Creative Commons Attribution 4.0 International (CC BY 4.0). Esto permite compartir y adaptar los conjuntos de datos para cualquier propósito, siempre que se otorgue el crédito correspondiente.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="visualización-de-la-serie-de-tiempo.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/index.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+</body>
+
+</html>
