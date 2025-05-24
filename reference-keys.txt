@@ -25,3 +25,9 @@ gráficos-acf-y-pacf
 estimación-del-modelo-arma
 verificación-del-modelo-arma
 pronóstico-con-el-modelo-arima-seleccionado
+modelo-prophet
+preparación-y-exploración-de-la-serie-de-tiempo
+modelado-con-prophet
+evaluación-del-modelo
+visualización-del-pronóstico
+conclusiones
