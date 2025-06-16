@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>7 Redes Neuronales Recurrentes (RNN) para Series de Tiempo | Análisis de series de tiempo</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The HTML output format for this example is bookdown::gitbook, set in the _output.yml file." />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="7 Redes Neuronales Recurrentes (RNN) para Series de Tiempo | Análisis de series de tiempo" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The HTML output format for this example is bookdown::gitbook, set in the _output.yml file." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="7 Redes Neuronales Recurrentes (RNN) para Series de Tiempo | Análisis de series de tiempo" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The HTML output format for this example is bookdown::gitbook, set in the _output.yml file." />
+  
+
+<meta name="author" content="Carlos Piñeros  Maestría en Ciencia de Datos  Pontificia Universidad Javeriana de Cali" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="modelo-prophet.html"/>
+<link rel="next" href="referencias.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Análisis de series de tiempo</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="05-RNN.html"><a href="#Introducci%C3%B3n.unnumbered"><i class="fa fa-check"></i><b>1</b> Introducción</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1.1</b> Conjunto de datos Online Retail II</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="05-RNN.html"><a href="#visualizaci%C3%B3n-de-la-serie-de-tiempo"><i class="fa fa-check"></i><b>2</b> Visualización de la serie de tiempo</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="visualización-de-la-serie-de-tiempo.html"><a href="visualización-de-la-serie-de-tiempo.html"><i class="fa fa-check"></i><b>2.1</b> Serie de Tiempo de Ventas Totales</a></li>
+<li class="chapter" data-level="2.2" data-path="05-RNN.html"><a href="#comparaci%C3%B3n-de-ventas-por-a%C3%B1o"><i class="fa fa-check"></i><b>2.2</b> Comparación de Ventas por Año</a></li>
+<li class="chapter" data-level="2.3" data-path="05-RNN.html"><a href="#serie-temporal-con-promedio-m%C3%B3vil"><i class="fa fa-check"></i><b>2.3</b> Serie Temporal con Promedio Móvil</a></li>
+<li class="chapter" data-level="2.4" data-path="05-RNN.html"><a href="#gr%C3%A1fico-de-rezagos"><i class="fa fa-check"></i><b>2.4</b> Gráfico de Rezagos</a></li>
+<li class="chapter" data-level="2.5" data-path="05-RNN.html"><a href="#an%C3%A1lisis-de-la-estacionalidad-anual"><i class="fa fa-check"></i><b>2.5</b> Análisis de la Estacionalidad Anual</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="05-RNN.html"><a href="#an%C3%A1lisis-de-la-descomposici%C3%B3n-de-ventas"><i class="fa fa-check"></i><b>3</b> Análisis de la Descomposición de Ventas</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="05-RNN.html"><a href="#descomposici%C3%B3n-mensual-de-ventas"><i class="fa fa-check"></i><b>3.1</b> Descomposición mensual de Ventas</a></li>
+<li class="chapter" data-level="3.2" data-path="05-RNN.html"><a href="#descomposici%C3%B3n-semanal-de-ventas-diarias"><i class="fa fa-check"></i><b>3.2</b> Descomposición Semanal de Ventas Diarias</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="modelado-con-holt-winters-y-suavizamiento-exponencial.html"><a href="modelado-con-holt-winters-y-suavizamiento-exponencial.html"><i class="fa fa-check"></i><b>4</b> Modelado con Holt-Winters y Suavizamiento Exponencial</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="05-RNN.html"><a href="#metodolog%C3%ADa-holt-winters"><i class="fa fa-check"></i><b>4.1</b> Metodología Holt-Winters</a></li>
+<li class="chapter" data-level="4.2" data-path="05-RNN.html"><a href="#metodolog%C3%ADas-de-suavizamiento-exponencial"><i class="fa fa-check"></i><b>4.2</b> Metodologías de Suavizamiento Exponencial</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="modelado-con-holt-winters-y-suavizamiento-exponencial.html"><a href="modelado-con-holt-winters-y-suavizamiento-exponencial.html#suavizamiento-exponencial-simple-ses"><i class="fa fa-check"></i><b>4.2.1</b> Suavizamiento Exponencial Simple (SES)</a></li>
+<li class="chapter" data-level="4.2.2" data-path="modelado-con-holt-winters-y-suavizamiento-exponencial.html"><a href="modelado-con-holt-winters-y-suavizamiento-exponencial.html#suavizamiento-exponencial-doble-holt"><i class="fa fa-check"></i><b>4.2.2</b> Suavizamiento Exponencial Doble (Holt)</a></li>
+<li class="chapter" data-level="4.2.3" data-path="modelado-con-holt-winters-y-suavizamiento-exponencial.html"><a href="modelado-con-holt-winters-y-suavizamiento-exponencial.html#suavizamiento-exponencial-triple"><i class="fa fa-check"></i><b>4.2.3</b> Suavizamiento Exponencial Triple:</a></li>
+<li class="chapter" data-level="4.2.4" data-path="05-RNN.html"><a href="#evaluaci%C3%B3n-y-comparaci%C3%B3n"><i class="fa fa-check"></i><b>4.2.4</b> Evaluación y Comparación</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="05-RNN.html"><a href="#metodolog%C3%ADa-box-jenkins-y-modelos-arima"><i class="fa fa-check"></i><b>5</b> Metodología Box-Jenkins y Modelos ARIMA</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="05-RNN.html"><a href="#identificaci%C3%B3n-del-modelo-arima"><i class="fa fa-check"></i><b>5.1</b> Identificación del Modelo ARIMA</a></li>
+<li class="chapter" data-level="5.2" data-path="05-RNN.html"><a href="#gr%C3%A1ficos-acf-y-pacf"><i class="fa fa-check"></i><b>5.2</b> Gráficos ACF y PACF</a></li>
+<li class="chapter" data-level="5.3" data-path="05-RNN.html"><a href="#estimaci%C3%B3n-del-modelo-arma"><i class="fa fa-check"></i><b>5.3</b> Estimación del Modelo ARMA</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="05-RNN.html"><a href="#verificaci%C3%B3n-del-modelo-arma"><i class="fa fa-check"></i><b>5.3.1</b> Verificación del Modelo ARMA</a></li>
+<li class="chapter" data-level="5.3.2" data-path="05-RNN.html"><a href="#pron%C3%B3stico-con-el-modelo-arima-seleccionado"><i class="fa fa-check"></i><b>5.3.2</b> Pronóstico con el Modelo ARIMA Seleccionado</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="modelo-prophet.html"><a href="modelo-prophet.html"><i class="fa fa-check"></i><b>6</b> Modelo Prophet</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="05-RNN.html"><a href="#preparaci%C3%B3n-y-exploraci%C3%B3n-de-la-serie-de-tiempo"><i class="fa fa-check"></i><b>6.1</b> Preparación y Exploración de la Serie de Tiempo</a></li>
+<li class="chapter" data-level="6.2" data-path="modelo-prophet.html"><a href="modelo-prophet.html#modelado-con-prophet"><i class="fa fa-check"></i><b>6.2</b> Modelado con Prophet</a></li>
+<li class="chapter" data-level="6.3" data-path="05-RNN.html"><a href="#evaluaci%C3%B3n-del-modelo"><i class="fa fa-check"></i><b>6.3</b> Evaluación del Modelo</a></li>
+<li class="chapter" data-level="6.4" data-path="05-RNN.html"><a href="#visualizaci%C3%B3n-del-pron%C3%B3stico"><i class="fa fa-check"></i><b>6.4</b> Visualización del Pronóstico</a></li>
+<li class="chapter" data-level="6.5" data-path="modelo-prophet.html"><a href="modelo-prophet.html#conclusiones"><i class="fa fa-check"></i><b>6.5</b> Conclusiones</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="redes-neuronales-recurrentes-rnn-para-series-de-tiempo.html"><a href="redes-neuronales-recurrentes-rnn-para-series-de-tiempo.html"><i class="fa fa-check"></i><b>7</b> Redes Neuronales Recurrentes (RNN) para Series de Tiempo</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="05-RNN.html"><a href="#preparaci%C3%B3n-y-transformaci%C3%B3n-de-datos"><i class="fa fa-check"></i><b>7.1</b> Preparación y Transformación de Datos</a></li>
+<li class="chapter" data-level="7.2" data-path="05-RNN.html"><a href="#configuraci%C3%B3n-y-entrenamiento-de-los-modelos"><i class="fa fa-check"></i><b>7.2</b> Configuración y entrenamiento de los modelos</a></li>
+<li class="chapter" data-level="7.3" data-path="05-RNN.html"><a href="#generaci%C3%B3n-de-predicciones-y-evaluaci%C3%B3n"><i class="fa fa-check"></i><b>7.3</b> Generación de Predicciones y Evaluación</a></li>
+<li class="chapter" data-level="7.4" data-path="redes-neuronales-recurrentes-rnn-para-series-de-tiempo.html"><a href="redes-neuronales-recurrentes-rnn-para-series-de-tiempo.html#conclusiones-1"><i class="fa fa-check"></i><b>7.4</b> Conclusiones</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Análisis de series de tiempo</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="redes-neuronales-recurrentes-rnn-para-series-de-tiempo" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">7</span> Redes Neuronales Recurrentes (RNN) para Series de Tiempo<a href="redes-neuronales-recurrentes-rnn-para-series-de-tiempo.html#redes-neuronales-recurrentes-rnn-para-series-de-tiempo" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Las Redes Neuronales Recurrentes (RNN) son arquitecturas de redes neuronales diseñadas para procesar datos secuenciales, como series de tiempo, gracias a sus conexiones de retroalimentación que les otorgan una “memoria” del pasado. Esta capacidad las hace ideales para tareas de pronóstico.</p>
+<p>Entre las RNN más fundamentales se encuentran las redes <strong>Elman</strong> y <strong>Jordan</strong>:</p>
+<ul>
+<li><p><strong>Red Elman (Simple Recurrent Network - SRN):</strong> Esta arquitectura añade una “capa de contexto” a una red feedforward. Las activaciones de la capa oculta en un paso de tiempo se retroalimentan a esta capa de contexto, que sirve como entrada adicional para la capa oculta en el siguiente paso. Esto permite a la red mantener un resumen del historial reciente de la secuencia.</p></li>
+<li><p><strong>Red Jordan:</strong> A diferencia de Elman, la red Jordan retroalimenta las activaciones de la <strong>capa de salida</strong> a una capa de estado, la cual se introduce como entrada en la siguiente iteración. Esto significa que la red “recuerda” sus propias predicciones pasadas.</p></li>
+</ul>
+<p>Ambas redes son cruciales para comprender la recurrencia y serán aplicadas en este análisis para pronosticar las ventas diarias.</p>
+<p>Para implementar estas redes en R, utilizaremos el paquete RSNNS (Recurrent Self-Organizing Map Neural Networks) que proporciona implementaciones de varias arquitecturas de redes neuronales, incluyendo Elman y Jordan.</p>
+<div id="preparación-y-transformación-de-datos" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Preparación y Transformación de Datos<a href="#preparaci%C3%B3n-y-transformaci%C3%B3n-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Las redes neuronales RNNs requieren que los datos estén en un formato específico y escalados:</p>
+<ul>
+<li><p>Las redes neuronales son sensibles a la escala de los datos de entrada. La serie original de ventas diarias (TotalSales) fue transformada utilizando el logaritmo natural (log(TotalSales)). Esta transformación contribuye a estabilizar la varianza de la serie y a linealizar la tendencia, lo cual es beneficioso para el entrenamiento de redes neuronales.</p></li>
+<li><p>Se definió una lag_window de 7 días para crear las secuencias de entrada y salida, lo que significa que los 7 valores y_scaled anteriores se utilizan como entrada para predecir el valor y_scaled del día siguiente.</p></li>
+<li><p>La variable y_log fue normalizada a un rango de [0, 1] utilizando una normalización Min-Max manual, basándose en los valores mínimos y máximos de y_log del conjunto de datos completo.</p></li>
+<li><p>Las secuencias generadas se dividieron en conjuntos de entrenamiento y prueba para evaluar el rendimiento del modelo en datos no vistos. Se reservaron las últimas 60 secuencias (correspondientes a los últimos 60 días de la serie original) para el conjunto de prueba.</p></li>
+</ul>
+</div>
+<div id="configuración-y-entrenamiento-de-los-modelos" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Configuración y entrenamiento de los modelos<a href="#configuraci%C3%B3n-y-entrenamiento-de-los-modelos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Ambas redes fueron implementadas utilizando el paquete RSNNS en R.Se configuró una única capa oculta con size = 10 neuronas.
+El número máximo de iteraciones (maxit) se estableció en 2500 para permitir que las redes tuvieran suficientes épocas para aprender.
+Para el algoritmo de aprendizaje, al especificar solo los parámetros de aprendizaje (learnFuncParams), RSNNS utiliza por defecto “Std_Backpropagation” (Backpropagation estándar).</p>
+<p>Para la red Elman, learnFuncParams se estableció en c(0.3, 0.5) representando tasa de aprendizaje y momento.
+Para la red Jordan, learnFuncParams se estableció en c(0.1) (tasa de aprendizaje).
+Se utilizó linOut = TRUE para la capa de salida, apropiado para problemas de regresión.
+Para asegurar la reproducibilidad de los resultados, se estableció una semilla (set.seed(123)) antes de cada entrenamiento de modelo.</p>
+<p>Inicialmente, el entrenamiento de las redes Elman y Jordan en RSNNS generó persistentes avisos sobre “ciclos topológicos” en la red, incluso al especificar el tamaño de la capa oculta como un vector (size = c(5)). Este comportamiento sugería un problema en la interpretación de la arquitectura por parte de la librería.</p>
+<p>una vez realizadas las correcciones respectivas, los avisos de ciclos en la red desaparecieron y el proceso de entrenamiento se ejecutó sin incidencias, permitiendo a las redes converger y aprender de manera efectiva.</p>
+</div>
+<div id="generación-de-predicciones-y-evaluación" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Generación de Predicciones y Evaluación<a href="#generaci%C3%B3n-de-predicciones-y-evaluaci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Los modelos Elman y Jordan generaron predicciones para el conjunto de prueba en la escala normalizada. Estas predicciones fueron posteriormente desnormalizadas a la escala logarítmica original y, finalmente, deslogaritmizadas (aplicando la función exponencial exp()) para obtener los pronósticos en la escala original de ventas. Se calcularon las métricas de rendimiento clave, RMSE y MAE, tanto en la escala logarítmica como en la escala original, para una evaluación integral del desempeño de cada modelo.</p>
+<p>Las métricas de rendimiento obtenidas para las redes Elman y Jordan en el conjunto de prueba, una vez que las predicciones fueron desnormalizadas y deslogaritmizadas correctamente, son las siguientes:</p>
+<pre><code>## 
+## --- Dataframe preparado para NN (primeras filas) ---</code></pre>
+<pre><code>## # A tibble: 6 × 2
+##   ds         y_log
+##   &lt;date&gt;     &lt;dbl&gt;
+## 1 2009-12-01 10.9 
+## 2 2009-12-02 11.1 
+## 3 2009-12-03 11.2 
+## 4 2009-12-04 10.6 
+## 5 2009-12-05  9.19
+## 6 2009-12-06 10.1</code></pre>
+<pre><code>## 
+## Estructura del dataframe preparado para NN:</code></pre>
+<pre><code>## tibble [604 × 2] (S3: tbl_df/tbl/data.frame)
+##  $ ds   : Date[1:604], format: &quot;2009-12-01&quot; &quot;2009-12-02&quot; ...
+##  $ y_log: num [1:604] 10.91 11.06 11.21 10.61 9.19 ...
+## NULL</code></pre>
+<pre><code>## 
+## Rango de y_log antes de la normalización:</code></pre>
+<pre><code>## Min y_log: 8.148188</code></pre>
+<pre><code>## Max y_log: 12.21075</code></pre>
+<pre><code>## 
+## --- Dataframe con columna &#39;y_scaled&#39; (primeras filas) ---</code></pre>
+<pre><code>## # A tibble: 6 × 3
+##   ds         y_log y_scaled
+##   &lt;date&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+## 1 2009-12-01 10.9     0.679
+## 2 2009-12-02 11.1     0.716
+## 3 2009-12-03 11.2     0.754
+## 4 2009-12-04 10.6     0.607
+## 5 2009-12-05  9.19    0.257
+## 6 2009-12-06 10.1     0.483</code></pre>
+<pre><code>## Rango de y_scaled: 0 1</code></pre>
+<pre><code>## 
+## --- Dimensiones de las secuencias para la red neuronal ---</code></pre>
+<pre><code>## Dimensiones de las entradas (filas, columnas = lag_window): 597 x 7</code></pre>
+<pre><code>## Dimensiones de las salidas (filas, 1): 597 x 1</code></pre>
+<pre><code>## 
+## --- División de datos (secuencias) ---</code></pre>
+<pre><code>## Longitud del conjunto de entrenamiento (secuencias): 543</code></pre>
+<pre><code>## Longitud del conjunto de prueba (secuencias): 54</code></pre>
+<pre><code>## Fechas del conjunto de prueba: 15256 a 15317</code></pre>
+<pre><code>## 
+## --- Entrenando Red Elman ---</code></pre>
+<pre><code>## 
+## --- Depuración de Valores Desnormalizados (Elman) ---</code></pre>
+<pre><code>## Primeros valores de predicciones (escala log):</code></pre>
+<pre><code>##          [,1]
+## [1,] 11.00687
+## [2,] 11.28703
+## [3,] 11.03812
+## [4,] 10.51130
+## [5,] 10.86182
+## [6,] 10.77981</code></pre>
+<pre><code>## Primeros valores reales del test (escala log):</code></pre>
+<pre><code>##           [,1]
+## [1,]  9.435434
+## [2,] 10.783927
+## [3,] 10.869957
+## [4,] 10.378456
+## [5,] 10.530660
+## [6,] 10.500885</code></pre>
+<pre><code>## 
+## Métricas Red Elman (escala logarítmica):</code></pre>
+<pre><code>## RMSE: 0.4873</code></pre>
+<pre><code>## MAE: 0.3362</code></pre>
+<pre><code>## 
+## Métricas Red Elman (ESCALA ORIGINAL DE VENTAS):</code></pre>
+<pre><code>## RMSE: 27516.9</code></pre>
+<pre><code>## MAE: 17980.36</code></pre>
+<pre><code>## 
+## --- Entrenando Red Jordan ---</code></pre>
+<pre><code>## 
+## Métricas Red Jordan (escala logarítmica):</code></pre>
+<pre><code>## RMSE: 0.3992</code></pre>
+<pre><code>## MAE: 0.2902</code></pre>
+<pre><code>## 
+## Métricas Red Jordan (ESCALA ORIGINAL DE VENTAS):</code></pre>
+<pre><code>## RMSE: 26908.25</code></pre>
+<pre><code>## MAE: 15437.16</code></pre>
+<p><img src="main_files/figure-html/unnamed-chunk-46-1.png" width="672" />
+La Red Jordan mostró unas métricas consistentemente más bajas que las de la Red Elman. Específicamente, en la escala logarítmica, Jordan obtuvo un RMSE de 0.3992 y un MAE de 0.2902, mientras que Elman registró un RMSE de 0.4873 y un MAE de 0.3362. Esta ventaja se mantuvo en la escala original, donde Jordan alcanzó un RMSE de 26,908.25 y un MAE de 15,437.16, superando a Elman con un RMSE de 27,516.90 y un MAE de 17,980.36.</p>
+<p>La Figura muestra visualmente el desempeño de las redes Elman y Jordan frente a las ventas reales en el conjunto de prueba. Se observa que ambas redes logran capturar la tendencia general y la estacionalidad semanal de la serie de ventas. La red Jordan (línea punteada verde) parece seguir de cerca la serie real (línea sólida azul) en varios puntos, evidenciando una buena capacidad de adaptación al patrón de las ventas. El pronóstico de Elman (línea punteada naranja) también muestra un seguimiento razonable.</p>
+</div>
+<div id="conclusiones-1" class="section level2 hasAnchor" number="7.4">
+<h2><span class="header-section-number">7.4</span> Conclusiones<a href="redes-neuronales-recurrentes-rnn-para-series-de-tiempo.html#conclusiones-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En general, estos resultados confirman que las redes Elman y Jordan, a pesar de ser arquitecturas clásicas de RNN, siguen siendo válidas para el modelado y pronóstico de series de tiempo, especialmente aquellas con patrones estacionales y tendencias.</p>
+<p>No obstante, para capturar variaciones que no son puramente temporales, es fundamental considerar la integración de variables exógenas como días festivos, promociones específicas, eventos especiales o cambios de precios que pueden tener un impacto significativo en las ventas. Incluir esta información como entradas adicionales a las redes neuronales permitiría a los modelos aprender y pronosticar con mayor precisión las fluctuaciones o picos que van más allá de los patrones de tendencia y estacionalidad propios de la serie.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="modelo-prophet.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="referencias.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/05-RNN.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+</body>
+
+</html>

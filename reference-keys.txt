@@ -31,3 +31,8 @@ modelado-con-prophet
 evaluación-del-modelo
 visualización-del-pronóstico
 conclusiones
+redes-neuronales-recurrentes-rnn-para-series-de-tiempo
+preparación-y-transformación-de-datos
+configuración-y-entrenamiento-de-los-modelos
+generación-de-predicciones-y-evaluación
+conclusiones-1
